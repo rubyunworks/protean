@@ -1,0 +1,34 @@
+= Protean
+
+    require 'protean'
+
+Create a prototype.
+
+    account = prototype do
+      @number  = '000000'
+      @balance = 0
+      @to_s    = fn{ "Account #{number} has a balance of $#{balance}." }
+    end
+
+Create a new account built based on the prototype.
+
+    account1 = account.new
+    account1.number = "000001"
+
+    account1.to_s.assert = "Account 000001 has a balance of $0."
+
+Protean prototype's utilize a traits system. With it, and prototype object
+can be used as a trait of another object.
+
+    transaction = prototype do
+      @credit = fn{ |amount| self.balance += amount }
+      @debit  = fn{ |amount| self.balance -= amount }
+    end
+
+    account.trait(transaction)
+
+    account1.credit(20)
+    account1.debit(10)
+
+    account1.to_s.assert = "Account 000001 has a balance of $10."
+

@@ -1,0 +1,11 @@
+---
+title  : Protean
+summary: Prototype-based Object-Oriented programming in Ruby.
+created: 2006-03-01
+
+authors:
+- Trans <transfire@gmail.com>
+
+description:
+  Proteus provides a means for writing prototype-based object-oriented
+  code in Ruby.
